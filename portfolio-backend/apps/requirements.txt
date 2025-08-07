@@ -1,0 +1,4 @@
+fastapi
+mangum
+starlette
+pydevd_pycharm

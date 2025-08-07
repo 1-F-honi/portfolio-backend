@@ -12,10 +12,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+## TODO: 環境構築でデバッグを分けれるようにする
+# import pydevd_pycharm
+# pydevd_pycharm.settrace('host.docker.internal', port=5890, suspend=False)
+
 
 @app.post("/chat")
 async def chat(value: Request):
     body = await value.json()
     return {"message": body["message"]}
 
-lambda_handler = Mangum(app)
+handler = Mangum(app)

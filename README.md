@@ -7,3 +7,8 @@ sam init --name portfolio-backend \
   --apps-template hello-world \
   --dependency-manager pip
 ```
+
+debug
+```shell
+sam local start-api --debug-port 5890
+```
