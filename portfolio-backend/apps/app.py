@@ -18,4 +18,4 @@ async def chat(value: Request):
     body = await value.json()
     return {"message": body["message"]}
 
-handler = Mangum(app)
+lambda_handler = Mangum(app)
