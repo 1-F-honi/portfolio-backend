@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi import Request
-from mangum import Mangum
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -17,5 +16,3 @@ app.add_middleware(
 async def chat(value: Request):
     body = await value.json()
     return {"message": body["message"]}
-
-handler = Mangum(app)
