@@ -23,7 +23,7 @@ async def chat(value: Request):
     body = await value.json()
     request_message = body.get("message")
     resp = client.responses.create(
-        model="gpt-4o-mini",  # 速くて安い系。必要なら他モデルへ
+        model="ft:gpt-4o-mini-2024-07-18:personal::C2wLyaHP",  # 速くて安い系。必要なら他モデルへ
         input=request_message
     )
     return {"message": resp.output_text}

@@ -38,3 +38,21 @@ source ~/.zshrc
 pipx runpip openai install 'openai[datalib]'
 ```
 
+### How To Fine tune
+
+#### data into data.jsonl
+reference by data.jsonl
+
+#### fmt check data.jsonl
+it's collect fmt if it returns empty
+```shell
+jq empty data.jsonl
+```
+
+#### data.jsonl upload to open ai api
+it's collect upload if it returns **id**
+```shell
+./fine_tunes_data_upload.sh
+```
+
+#### 
