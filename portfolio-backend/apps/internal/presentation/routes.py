@@ -1,11 +1,19 @@
-from fastapi import FastAPI, APIRouter
+import os
+
+from fastapi import APIRouter
 from fastapi import Request
 from ..infra.config import ai_config_setting
-from ..infra.ai import factory_open_ai, get_ai_response
+from ..infra.ai import factory_open_ai,factory_open_ai_set_key, get_ai_response
+from ..infra.secret import get_open_ai_key
 
 router = APIRouter()
 ai_config = ai_config_setting()
-ai = factory_open_ai()
+# ローカル環境では環境変数からAPI_KEYを取得する
+if os.environ.get("OPENAI_API_KEY") is None:
+    open_api_key = get_open_ai_key()
+    ai = factory_open_ai_set_key(open_api_key)
+else:
+    ai = factory_open_ai()
 
 @router.post("/api/chat")
 async def chat(value: Request):
