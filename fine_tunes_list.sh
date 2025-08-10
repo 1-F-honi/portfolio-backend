@@ -1,1 +1,1 @@
-openai fine_tunes.list
+openai api fine_tuning.jobs.list
