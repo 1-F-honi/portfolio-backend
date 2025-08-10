@@ -12,3 +12,29 @@ debug
 ```shell
 sam local start-api --debug-port 5890
 ```
+
+### Setup Env
+
+#### pipx openai install
+
+```shell
+brew install pipx
+pipx ensurepath
+pipx install openai
+openai --help
+```
+
+
+#### path setting
+
+```shell
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.zshrc
+source ~/.zshrc
+```
+
+#### add install in pipx
+
+```shell
+pipx runpip openai install 'openai[datalib]'
+```
+

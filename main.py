@@ -1,7 +1,13 @@
+import os
+
+from openai import OpenAI
 from fastapi import FastAPI
 from fastapi import Request
 from starlette.middleware.cors import CORSMiddleware
+import uvicorn
 
+OPEN_API_KEY = os.environ.get("OPENAI_API_KEY")
+client = OpenAI()
 app = FastAPI()
 
 app.add_middleware(
@@ -15,4 +21,13 @@ app.add_middleware(
 @app.post("/chat")
 async def chat(value: Request):
     body = await value.json()
-    return {"message": body["message"]}
+    request_message = body.get("message")
+    resp = client.responses.create(
+        model="gpt-4o-mini",  # 速くて安い系。必要なら他モデルへ
+        input=request_message
+    )
+    return {"message": resp.output_text}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
