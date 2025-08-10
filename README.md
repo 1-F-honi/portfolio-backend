@@ -1,6 +1,16 @@
 ### Manual Deploy
 
-create sam project
+#### build
+```shell
+sam build
+```
+
+#### debug
+```shell
+sam local start-api
+```
+
+#### create sam project
 ```shell
 sam init --name portfolio-backend \
   --runtime python3.11 \
@@ -8,10 +18,7 @@ sam init --name portfolio-backend \
   --dependency-manager pip
 ```
 
-debug
-```shell
-sam local start-api --debug-port 5890
-```
+
 
 ### Setup Env
 
