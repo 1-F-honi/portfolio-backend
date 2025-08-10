@@ -21,7 +21,7 @@ Resources:
         - x86_64
       Environment:                   # ← ここを追加
         Variables:
-          OPENAI_API_KEY: xxxx
+          OPEN_AI_KEY_SECRET_PATH: PortFolio/AI/OpenAI
           OPENAI_API_MODEL_NAME: ft:gpt-4o-mini-2024-07-18:personal::C2wLyaHP
       Events:
         HelloWorld:

@@ -3,3 +3,4 @@ mangum
 starlette
 pydevd_pycharm
 openai
+boto3
