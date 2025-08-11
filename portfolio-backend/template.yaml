@@ -23,6 +23,20 @@ Resources:
         Variables:
           OPEN_AI_KEY_SECRET_PATH: PortFolio/AI/OpenAI
           OPENAI_API_MODEL_NAME: ft:gpt-4o-mini-2024-07-18:personal::C2wLyaHP
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            # Secrets Manager: Read/Write（既存シークレットの読み書き想定）
+            - Sid: SecretsManagerReadWrite
+              Effect: Allow
+              Action:
+                - secretsmanager:DescribeSecret
+                - secretsmanager:GetSecretValue
+                - secretsmanager:PutSecretValue
+                - secretsmanager:UpdateSecret
+                - secretsmanager:UpdateSecretVersionStage
+              Resource:
+                - !Sub arn:${AWS::Partition}:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:PortFolio/AI/OpenAI-*
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
