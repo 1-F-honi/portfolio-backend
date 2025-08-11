@@ -19,5 +19,8 @@ else:
 async def chat(value: Request):
     body = await value.json()
     message = body["message"]
+    # エラーの時のみステータスコードを返却する
     response = get_ai_response(message, ai_config.model_name, ai)
-    return {"message": response.output_text}
+    if isinstance(response, int):
+        response = "OpenAIの連携でエラーが出ております。\nご不便をおかけし申し訳ございません。しばらくお待ちください。"
+    return {"message": response}
